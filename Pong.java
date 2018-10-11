@@ -16,10 +16,6 @@ public class Pong {
         //initial values of paddle
         double[] px = {-0.2, 0.2, 0.2, -0.2};
         double[] py = {-0.85, -0.85, -.90, -0.90};
-        /*double px = 0;
-        double py = -0.8;
-        double length = 0.25;
-        double width = 0.05; */
         double dpx = 0.018;                 // inc. paddle movement
 
         // main animation loop
@@ -39,32 +35,13 @@ public class Pong {
                 for (int i=0; i<4; i++)  px[i] -= dpx;
             if (StdDraw.isKeyPressed(KeyEvent.VK_RIGHT) && px[1]+dpx <= 1.0 )
                 for (int i=0; i<4; i++)  px[i] += dpx;
-            /*if(StdDraw.isKeyPressed(KeyEvent.VK_LEFT) && px - dpx >= -1.0 + length){
-                px -= dpx;
-            }
-            if(StdDraw.isKeyPressed(KeyEvent.VK_RIGHT) && px + dpx <= 1.0 - length){
-                px += dpx;
-            }*/
 
             //Paddle collision
-            
             if(ry + vy <= py[0] && (rx + vx >= px[0] && rx +vx <= px[1])){ 
                     ry = py[0] + radius;
                     vy = -vy;
             }
-                /*if(rx + vx >= px[0]){
-                    //rx = px[0] + radius;
-                    //vx = -vx;
-                }else if(rx + vx <= px[1]){
-                    //rx = px[1] + radius;
-                    vx = -vx;
-                }*/
             
-            /*
-            if(Math.abs(ry+vy) >= py + width + radius){
-                ry = py + width + radius;
-                vy = -vy;
-            }*/
 
             StdDraw.clear();
 
@@ -75,7 +52,6 @@ public class Pong {
             // draw paddle on the screen
             StdDraw.setPenColor(StdDraw.BLUE);
             StdDraw.filledPolygon(px, py);
-            //StdDraw.filledRectangle(px, py, length, width);
 
             // display and pause for 20 ms
             StdDraw.show();
